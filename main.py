@@ -7,9 +7,8 @@ status = 1
 original_df = pd.read_csv("Data/spotifydataset.csv", on_bad_lines='warn', encoding='latin-1')
 my_df = pd.read_csv("Data/spotifydataset.csv", on_bad_lines='warn', encoding='latin-1')
 my_df = my_df.drop(columns = ['released_month', 'released_day', 'in_spotify_charts', 'in_spotify_playlists', 'in_shazam_charts', 'in_apple_charts', 'in_apple_playlists', 'in_deezer_charts', 'in_deezer_playlists', 'danceability_%', 'valence_%', 'energy_%', 'acousticness_%', 'instrumentalness_%', 'liveness_%', 'speechiness_%'])
-
 my_df['key'] = my_df['key'].fillna('C')
-       
+my_df.to_csv('spotifydata.csv', index=False)       
 
     
 my_df.iloc[:950]
