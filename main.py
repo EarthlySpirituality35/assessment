@@ -1,14 +1,24 @@
 # importing functions 
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
+import numpy as nppi
 
 status = 1
 
+
 my_df = pd.read_csv("Data/spotifydataset.csv", on_bad_lines='warn', encoding='latin-1')
 my_df = my_df.drop(columns = ['released_month', 'released_day', 'in_spotify_charts', 'in_spotify_playlists', 'in_shazam_charts', 'in_apple_charts', 'in_apple_playlists', 'in_deezer_charts', 'in_deezer_playlists', 'danceability_%', 'valence_%', 'energy_%', 'acousticness_%', 'instrumentalness_%', 'liveness_%', 'speechiness_%'])
-my_df.iloc[:1000]
+my_df.iloc[:950]
 #my_df['streams'] = my_df['streams'].astype(float)
+
+
+
+my_df['artist_count'].plot.pie()
+plt.show()
+
+print('''
+Welcome to spotify's top 950. This is where you find information about the top 950 songs that spotify has to offer. 
+      ''')
 
 def streamchart():
     my_df.plot(
@@ -90,19 +100,16 @@ def gui():
     global status
     global row
     global avg
-    print('''
-Spotify Dataset
 
-Type:
+    print('''
+
+Enter:
 1. Print Dataframe
 2. Visulised version of charts
 3. Find specific dataframe
 4. Find the average of a certain category (nearest number)
 5. Find the top x songs
 6. Quit
-        
-
-
 ''')
     try:
         option = int(input('Enter Selection: '))
@@ -142,9 +149,7 @@ Which chart would you like to see?
             print(round(my_df.loc[:, avg].mean(), 0))
         elif option == 5:
             popular = int(input('Enter the top x number that you want to find out about: '))
-            for x in popular():
-                print(my_df.iloc[[popular]])
-                x=x+1
+            print(my_df.head(popular))
         elif option == 6:
             status = 0
         else:
@@ -156,3 +161,4 @@ Which chart would you like to see?
 
 while status == 1:
     gui()
+
