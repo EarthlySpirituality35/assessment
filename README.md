@@ -1,4 +1,4 @@
-# assessment
+# README/how to use
 
 Download the file, then run main.py using the triangle icon.
 Nothing should be moved/changed with the code or datasets.
